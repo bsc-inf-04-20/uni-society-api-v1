@@ -1,7 +1,9 @@
 export class createUserDto{
 
-    Username: string;
+    username: string;
 
     password: string;
+
+    yearOfStudy: number;
 
 }
