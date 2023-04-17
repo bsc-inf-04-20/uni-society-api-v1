@@ -24,4 +24,8 @@ export class UsersService {
      return this.userRepository.update({id},{...updateUserParams});
     }
 
+    deleteUser(id:number){
+        return this.userRepository.delete({id});
+    }
+
 }
