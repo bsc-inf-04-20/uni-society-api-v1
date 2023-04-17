@@ -6,12 +6,12 @@ import { createUserParams } from 'src/utils/params';
 
 @Injectable()
 export class UsersService {
-
-    constructor(@InjectRepository(User) private userRepository: Repository<User>,
+    constructor(
+        @InjectRepository(User) private userRepository: Repository<User>,
     ){}
 
     findUsers(){
-
+       return this.userRepository.find();
     }
 
     createUser(userDetails:createUserParams){
