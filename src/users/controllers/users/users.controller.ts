@@ -20,10 +20,10 @@ createUser(@Body() createUserDto: createUserDto){
 }
 
 @Patch(':id')
-updateUSer(
+async updateUSer(
 @Param('id', ParseIntPipe) id:number, 
 @Body() updateUserDto: updateUserDto){
-return this.UsersService.updateUser(id, updateUserDto)
+await this.UsersService.updateUser(id, updateUserDto)
    }
 
 @Delete(':id')
