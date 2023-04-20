@@ -14,8 +14,8 @@ getUsers(){
 }
 
 @Get(':id')
-    getuser(@Param('id', ParseIntPipe) id:number){
-
+   getuser(@Param('id', ParseIntPipe) id:number){
+     return this.UsersService.findUser(id);
     }
 
 
