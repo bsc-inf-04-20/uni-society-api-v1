@@ -14,6 +14,7 @@ export class UsersService {
        return this.userRepository.find();
     }
 
+
     createUser(userDetails:createUserParams){
         const newUser=this.userRepository.create({...userDetails});
 

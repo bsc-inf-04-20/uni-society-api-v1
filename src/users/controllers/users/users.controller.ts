@@ -13,6 +13,12 @@ getUsers(){
     return this.UsersService.findUsers();
 }
 
+@Get(':id')
+    getuser(@Param('id', ParseIntPipe) id:number){
+
+    }
+
+
 @Post()
 createUser(@Body() createUserDto: createUserDto){
     
