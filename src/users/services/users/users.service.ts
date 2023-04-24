@@ -28,6 +28,11 @@ export class UsersService {
     }
 
     updateUser(id:number, updateUserParams: updateUserParams){
+
+    const thisUser=this.userRepository.findBy({id});
+
+    if(!thisUser)
+
      return this.userRepository.update({id},{...updateUserParams});
     }
 

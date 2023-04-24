@@ -6,17 +6,7 @@ import { User } from 'src/typeorm/entities/user';
 
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User]),
-  TypeOrmModule.forRoot({
-    type:'mysql',
-    host:'localhost',
-    port:3306,
-    username:'root',
-    password:'',
-    database:'uni_society',
-    entities:[User],
-    synchronize:true
-  }), UsersModule],
+  imports: [TypeOrmModule.forFeature([User])],
   controllers: [UsersController],
   providers: [UsersService]
 })
