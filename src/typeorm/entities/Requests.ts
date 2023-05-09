@@ -1,15 +1,12 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Society } from "./Society";
 import { User } from "./user";
 
-
-
-@Entity({name:"user_society"})
-export class User_Society{
+@Entity({name:'request'})
+export class Request{
 
 @PrimaryGeneratedColumn()
 relation_id:number;
-
 
 @OneToOne(type => User)
 @JoinColumn({referencedColumnName: "id", name:"user_id" })

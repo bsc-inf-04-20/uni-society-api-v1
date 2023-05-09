@@ -6,6 +6,8 @@ import { SocietiesModule } from './societies/societies.module';
 import { Society } from './typeorm/entities/Society';
 import { EventsModule } from './events/events.module';
 import { Event } from './typeorm/entities/Event';
+import { User_Society } from './typeorm/entities/User_Society';
+import { Request } from './typeorm/entities/Requests';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -15,7 +17,7 @@ import { Event } from './typeorm/entities/Event';
     username:'root',
     password:'',
     database:'uni_society',
-    entities:[User, Society, Event],
+    entities:[User, Society, Event, User_Society, Request],
     synchronize:true
   }), UsersModule, SocietiesModule, EventsModule],
   controllers: [],
