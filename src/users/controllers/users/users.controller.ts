@@ -14,6 +14,12 @@ export class UsersController {
     constructor(private UsersService: UsersService){}
 
 @Get()
+findAll(){
+    return this.UsersService.findAll();
+}
+
+
+@Get()
 getUsers(){
     return this.UsersService.findUsers();
 }
