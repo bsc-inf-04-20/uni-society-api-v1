@@ -40,12 +40,17 @@ async createUser(@Body() createUserDto: createUserDto){
 async updateUSer(
 @Param('id', ParseIntPipe) id:number, 
 @Body() updateUserDto: updateUserDto){
-await this.UsersService.updateUser(id, updateUserDto)
+     await this.UsersService.updateUser(id, updateUserDto)
    }
 
 @Delete(':id')
-deleteUser(@Param('id', ParseIntPipe) id:number){
+   deleteUser(@Param('id', ParseIntPipe) id:number){
 return this.UsersService.deleteUser(id)
+}
+
+@Get(':id/requets')
+getUserRequests(@Param('id',ParseIntPipe) id:number){
+    return this.UsersService.getUserRequest(id);
 }
 
 }

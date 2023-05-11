@@ -1,4 +1,4 @@
-import { Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Index, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Society } from "./Society";
 import { User } from "./user";
 
@@ -8,11 +8,11 @@ export class Request{
 @PrimaryGeneratedColumn()
 relation_id:number;
 
-@OneToOne(type => User)
-@JoinColumn({referencedColumnName: "id", name:"user_id" })
+@ManyToOne(type => User)
+@JoinColumn({ referencedColumnName: "id" ,name:"user_id"})
 user: User;
 
-@OneToOne(type => Society)
+@ManyToOne(type => Society)
 @JoinColumn({referencedColumnName: "society_id", name:"society_id" })
 society: Society;
 

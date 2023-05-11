@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, Repository } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, Repository, OneToMany } from "typeorm";
+import { Request } from "./Requests";
 
 @Entity({name: 'user'})
 export class User{
@@ -13,4 +14,7 @@ export class User{
 
     @Column()
     yearOfStudy: number;
+
+    @OneToMany((type)=>Request, request=>request.user)
+    requests:Request[];
 }

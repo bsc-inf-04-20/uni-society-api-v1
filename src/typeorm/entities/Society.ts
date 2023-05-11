@@ -1,8 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column, Repository, OneToMany } from "typeorm";
 import { Event } from "./Event";
+import { Request } from "./Requests";
+
+
 
 @Entity({name: 'society'})
 export class Society{
+    
     @PrimaryGeneratedColumn()
     society_id: number;
 
@@ -17,4 +21,7 @@ export class Society{
 
     @OneToMany(type => Event, event => event.society)
     events: Event[];
+
+    @OneToMany((type)=>Request, request=>request.society)
+    requests:Request[];
 }
