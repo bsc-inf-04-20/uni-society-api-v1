@@ -44,7 +44,7 @@ async createSociety(createSocietyDetails:createSocietyparams){
 
 }
 
-async editUser(society_id:number, updateSocietyDetails:createSocietyparams){
+async editSociety(society_id:number, updateSocietyDetails:createSocietyparams){
 
     const society=await this.societyRepository.findOneBy({society_id});
     if(society){
@@ -59,7 +59,7 @@ async editUser(society_id:number, updateSocietyDetails:createSocietyparams){
 
 }
 
-async deleteUser(society_id:number){
+async deleteSociety(society_id:number){
 
     const society=await this.societyRepository.findOneBy({society_id});
     if(society){

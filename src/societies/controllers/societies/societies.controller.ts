@@ -22,20 +22,20 @@ createSociety(@Body() createSocietyDto:createSocietyDto){
 }
 
 @Patch(':id')
-editUser(
+editSociety(
     @Body() updateSocietyDto:createSocietyDto,
     @Param('id', ParseIntPipe) id:number
 ){
 
-    return this.SocietiesService.editUser(id, updateSocietyDto);
+    return this.SocietiesService.editSociety(id, updateSocietyDto);
 
 }
 
 @Delete(':id')
-deleteUser(
+deleteSociety(
     @Param('id', ParseIntPipe) id:number
 ){
-   return this.SocietiesService.deleteUser(id);
+   return this.SocietiesService.deleteSociety(id);
 }
 
 @Get(':id/requests')

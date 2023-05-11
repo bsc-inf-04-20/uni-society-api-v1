@@ -5,6 +5,7 @@ import { UsersService } from './../../services/users/users.service';
 import { ValidateCreateUserPipe } from 'src/users/pipes/validate-create-user/validate-create-user.pipe';
 import { AuthGuard } from 'src/users/guards/auth/auth.guard';
 import { LoggingInterceptor } from 'src/users/interceptors/logging/logging.interceptor';
+import { createRequestDto } from './../../dtos/createRequest.dto';
 
 @Controller('users')
 @UseGuards(AuthGuard)
@@ -15,7 +16,7 @@ export class UsersController {
 
 @Get()
 findAll(){
-    return this.UsersService.findAll();
+    return this.UsersService.findUsers();
 }
 
 
@@ -45,10 +46,15 @@ async updateUSer(
 
 @Delete(':id')
    deleteUser(@Param('id', ParseIntPipe) id:number){
-return this.UsersService.deleteUser(id)
+    return this.UsersService.deleteUser(id)
 }
 
-@Get(':id/requets')
+@Post(':id/requests')
+createUserRequest(@Param('id', ParseIntPipe) id:number,@Body() createRequestDto:createRequestDto){
+    return this.UsersService.createUserRequest(id, createRequestDto);
+}
+
+@Get(':id/requests')
 getUserRequests(@Param('id',ParseIntPipe) id:number){
     return this.UsersService.getUserRequest(id);
 }

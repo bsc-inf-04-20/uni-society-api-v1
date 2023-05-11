@@ -1,8 +1,11 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, ParseIntPipe } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { EntityManager, Repository } from 'typeorm';
 import { User } from 'src/typeorm/entities/user';
 import { createUserParams, updateUserParams } from 'src/utils/params';
+import { createRequestDto } from './../../dtos/createRequest.dto';
+import { Request } from 'src/typeorm/entities/Requests';
+
 
 
 @Injectable()
@@ -11,10 +14,6 @@ export class UsersService {
         @InjectRepository(User) private userRepository: Repository<User>,
         private readonly entityManager:EntityManager
     ){}
-
-findAll(){
-    return 'returning all users';
-}
 
  findUsers(){
        return this.userRepository.find();
@@ -59,6 +58,19 @@ findAll(){
  deleteUser(id:number){
         return this.userRepository.delete({id});
     }
+
+async createUserRequest(id:number, userRequestDetails:createRequestDto){
+
+    const quary=`select society_id from society where society_name='${userRequestDetails.society_name}' limit 1;`;
+
+    const result=await this.entityManager.query(quary);
+
+    const quary2=`insert into request(user_id, society_id) values(${id},${result[0].society_id});`;
+
+    const result2=await this.entityManager.query(quary2);
+
+    return result2;
+}
 
  async getUserRequest(user_id:number){
     

@@ -8,6 +8,8 @@ import { EventsModule } from './events/events.module';
 import { Event } from './typeorm/entities/Event';
 import { User_Society } from './typeorm/entities/User_Society';
 import { Request } from './typeorm/entities/Requests';
+import { Post } from './typeorm/entities/Post';
+import { Patrone } from './typeorm/entities/Patrone';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -17,7 +19,7 @@ import { Request } from './typeorm/entities/Requests';
     username:'root',
     password:'',
     database:'uni_society',
-    entities:[User, Society, Event, User_Society, Request],
+    entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event],
     synchronize:true, 
     autoLoadEntities: true
   }), UsersModule, SocietiesModule, EventsModule],
