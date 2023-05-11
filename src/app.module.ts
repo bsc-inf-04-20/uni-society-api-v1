@@ -18,7 +18,8 @@ import { Request } from './typeorm/entities/Requests';
     password:'',
     database:'uni_society',
     entities:[User, Society, Event, User_Society, Request],
-    synchronize:true
+    synchronize:true, 
+    autoLoadEntities: true
   }), UsersModule, SocietiesModule, EventsModule],
   controllers: [],
   providers: [],
