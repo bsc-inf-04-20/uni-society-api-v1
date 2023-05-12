@@ -16,7 +16,7 @@ export class PostService {
     private readonly entityManager:EntityManager
     ){}
 
-    async createpost(userId,societyId:number, createpostDetails:createPostDto){
+    async createpost(userId:number,societyId:number, createpostDetails:createPostDto){
     
         const quary1=`insert into post(details, society_id, user_id) values('${createpostDetails.details}',${societyId},${userId})`
 
@@ -52,7 +52,7 @@ export class PostService {
 
     }
 
-    async getposts(userId:number,societyId:number){
+    async getposts(societyId:number){
         const fetchrequestQuery=`select details from post inner join post_to_society on post.post_id=post_to_society.post_id where post_to_society.society_id=${societyId};`;
 
         const queryCmd=await this.entityManager.query(fetchrequestQuery);

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, Repository, OneToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, Repository, OneToOne, JoinColumn, ManyToOne } from "typeorm";
 import { Society } from "./Society";
 
 @Entity({name: 'event'})
@@ -18,7 +18,7 @@ export class Event{
     @Column()
     event_date:Date;
 
-    @OneToOne(type => Society)
+    @ManyToOne(type => Society)
     @JoinColumn({referencedColumnName: "society_id", name:"society_id" })
     society: Society;
    

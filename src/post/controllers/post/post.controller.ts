@@ -14,9 +14,9 @@ export class PostController {
     return this.PostsService.createpost(userId,societyId,createpostDto);
   }
 
-@Get('users/:userId/societies/:societyId/posts')
-   getPosts(@Param('userId', ParseIntPipe) userId:number, @Param('societyId', ParseIntPipe ) societyId:number){
-      return this.PostsService.getposts(userId,societyId);
+@Get('societies/:societyId/posts')
+   getPosts(@Param('societyId', ParseIntPipe ) societyId:number){
+      return this.PostsService.getposts(societyId);
    }
 
   
