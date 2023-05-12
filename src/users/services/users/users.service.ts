@@ -90,6 +90,7 @@ async createUserRequest(id:number, userRequestDetails:createRequestDto){
  }
 
  async exitSociety(userId:number, societyId:number){
+    
     const query=`delete from user_society where user_id=${userId} and society_id=${societyId}`;
 
     return await this.entityManager.query(query);
