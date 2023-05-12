@@ -12,6 +12,9 @@ import { Post } from './typeorm/entities/Post';
 import { Patrone } from './typeorm/entities/Patrone';
 import { PostModule } from './post/post.module';
 import { postToSociety } from './typeorm/entities/post_to_society';
+import { PatroneModule } from './patrone/patrone.module';
+import { SocietyLeaderModule } from './society-leader/society-leader.module';
+import { Society_Leader } from './typeorm/entities/SocietyLeader';
 
 
 @Module({
@@ -22,10 +25,10 @@ import { postToSociety } from './typeorm/entities/post_to_society';
     username:'root',
     password:'',
     database:'uni_society',
-    entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety],
+    entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader],
     synchronize:true, 
     autoLoadEntities: true
-  }), UsersModule, SocietiesModule, EventsModule, PostModule],
+  }), UsersModule, SocietiesModule, EventsModule, PostModule, PatroneModule, SocietyLeaderModule],
   controllers: [],
   providers: [],
 })

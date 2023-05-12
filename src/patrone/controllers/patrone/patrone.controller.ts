@@ -1,4 +1,4 @@
-import { Controller, Param, Post, ParseIntPipe } from '@nestjs/common';
+import { Controller, Param, Post, ParseIntPipe, Body } from '@nestjs/common';
 import { PatroneService } from 'src/patrone/service/patrone/patrone.service';
 import { ApiTags } from '@nestjs/swagger';
 import { createPatroneDto } from 'src/patrone/dtos/createPatrone.dto';
@@ -10,7 +10,7 @@ export class PatroneController {
 
 
     @Post(':userId')
-    createPatrone(@Param('userId', ParseIntPipe) userId:number, createPatroneDto:createPatroneDto){
+    createPatrone(@Param('userId', ParseIntPipe) userId:number, @Body() createPatroneDto:createPatroneDto){
 
         return this.PatroneService.createPatrone(userId,createPatroneDto);
 

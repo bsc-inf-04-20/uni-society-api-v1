@@ -1,4 +1,4 @@
-import { Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Society } from "./Society";
 import { User } from "./user";
 
@@ -15,5 +15,4 @@ user:User;
 @OneToOne(type=>Society)
 @JoinColumn({ referencedColumnName: "society_id" ,name:"society_id"})
 society:Society;
-
 }

@@ -1,14 +1,12 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Society } from "./Society";
 import { User } from "./user";
 
-
-
-@Entity({name:"user_society"})
-export class User_Society{
+@Entity({name:'society_leader'})
+export class Society_Leader{
 
 @PrimaryGeneratedColumn()
-relation_id:number;
+leadership_id:number;
 
 
 @ManyToOne(type => User)

@@ -81,4 +81,18 @@ async createUserRequest(id:number, userRequestDetails:createRequestDto){
     return result;
  }
 
+ async getSocieties(userId:number){
+
+    const quary=`select society_name from user_society inner join society on user_society.society_id=society.society_id where user_society.user_id=${userId};`;
+
+    return this.entityManager.query(quary);
+
+ }
+
+ async exitSociety(userId:number, societyId:number){
+    const query=`delete from user_society where user_id=${userId} and society_id=${societyId}`;
+
+    return await this.entityManager.query(query);
+ }
+
 }

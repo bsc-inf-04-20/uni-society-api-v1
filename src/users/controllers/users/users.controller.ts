@@ -62,4 +62,15 @@ getUserRequests(@Param('id',ParseIntPipe) id:number){
     return this.UsersService.getUserRequest(id);
 }
 
+@Get(':userId/societies')
+getUserSocieties(@Param('userId',ParseIntPipe) userId:number){
+    return this.UsersService.getSocieties(userId);
+}
+
+@Delete(':userId/societies/:societyId')
+exitSociety(@Param('userId',ParseIntPipe) userId:number, @Param('societyId', ParseIntPipe) societyId:number){
+    return this.UsersService.exitSociety(userId,societyId);
+}
+
+
 }
