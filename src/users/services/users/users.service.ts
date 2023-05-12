@@ -74,7 +74,7 @@ async createUserRequest(id:number, userRequestDetails:createRequestDto){
 
  async getUserRequest(user_id:number){
     
-    const quary=`select  society_name from user inner join request on society.society_id=request.society_id where user_id=${user_id} `;
+    const quary=`select society_name from society inner join request on society.society_id=request.society_id where user_id=${user_id} `;
 
     const result=await this.entityManager.query(quary);
 

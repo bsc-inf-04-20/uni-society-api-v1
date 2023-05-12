@@ -10,6 +10,9 @@ import { User_Society } from './typeorm/entities/User_Society';
 import { Request } from './typeorm/entities/Requests';
 import { Post } from './typeorm/entities/Post';
 import { Patrone } from './typeorm/entities/Patrone';
+import { PostModule } from './post/post.module';
+import { postToSociety } from './typeorm/entities/post_to_society';
+
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -19,10 +22,10 @@ import { Patrone } from './typeorm/entities/Patrone';
     username:'root',
     password:'',
     database:'uni_society',
-    entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event],
+    entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety],
     synchronize:true, 
     autoLoadEntities: true
-  }), UsersModule, SocietiesModule, EventsModule],
+  }), UsersModule, SocietiesModule, EventsModule, PostModule],
   controllers: [],
   providers: [],
 })

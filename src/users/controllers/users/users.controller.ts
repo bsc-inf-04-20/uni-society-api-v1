@@ -6,10 +6,13 @@ import { ValidateCreateUserPipe } from 'src/users/pipes/validate-create-user/val
 import { AuthGuard } from 'src/users/guards/auth/auth.guard';
 import { LoggingInterceptor } from 'src/users/interceptors/logging/logging.interceptor';
 import { createRequestDto } from './../../dtos/createRequest.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('users')
 @UseGuards(AuthGuard)
 @UseInterceptors(LoggingInterceptor)
+
+@ApiTags('User')
 export class UsersController {
 
     constructor(private UsersService: UsersService){}
