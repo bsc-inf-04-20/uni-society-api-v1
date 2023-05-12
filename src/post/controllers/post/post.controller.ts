@@ -19,4 +19,6 @@ export class PostController {
       return this.PostsService.getposts(userId,societyId);
    }
 
+  
+
 }
