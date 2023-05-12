@@ -7,8 +7,11 @@ import { User } from "./user";
 @Entity({name:"user_society"})
 export class User_Society{
 
-@PrimaryGeneratedColumn()
-relation_id:number;
+@PrimaryColumn()
+user_id:number;
+
+@PrimaryColumn()
+society_id:number;
 
 
 @ManyToOne(type => User)

@@ -1,4 +1,4 @@
-import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, JoinColumn, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Post } from "./Post";
 import { Society } from "./Society";
 
@@ -6,8 +6,11 @@ import { Society } from "./Society";
 @Entity({name:'post_to_society'})
 export class postToSociety{
 
-    @PrimaryGeneratedColumn()
-    id:number;
+    @PrimaryColumn()
+    post_id:number;
+
+    @PrimaryColumn()
+    society_id:number;
 
     @ManyToOne(type=>Post)
     @JoinColumn({referencedColumnName:'post_id', name:'post_id'})

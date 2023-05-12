@@ -5,6 +5,7 @@ import { User } from 'src/typeorm/entities/user';
 import { createUserParams, updateUserParams } from 'src/utils/params';
 import { createRequestDto } from './../../dtos/createRequest.dto';
 import { Request } from 'src/typeorm/entities/Requests';
+import { User_Society } from 'src/typeorm/entities/User_Society';
 
 
 
@@ -12,6 +13,8 @@ import { Request } from 'src/typeorm/entities/Requests';
 export class UsersService {
     constructor(
         @InjectRepository(User) private userRepository: Repository<User>,
+        @InjectRepository(Request) private requestRepository: Repository<Request>,
+        @InjectRepository(User_Society) private userToSocietyRepository: Repository<User_Society>,
         private readonly entityManager:EntityManager
     ){}
 
@@ -90,10 +93,32 @@ async createUserRequest(id:number, userRequestDetails:createRequestDto){
  }
 
  async exitSociety(userId:number, societyId:number){
-    
-    const query=`delete from user_society where user_id=${userId} and society_id=${societyId}`;
 
-    return await this.entityManager.query(query);
+    const outGoingMember=await this.userToSocietyRepository.findOneBy({society_id:societyId, user_id:userId})
+   
+    return this.userToSocietyRepository.remove(outGoingMember);
+
+ }
+
+ async addToSociety(userId:number,societyId:number){
+
+    //removing the users pending request request
+  const request= await this.requestRepository.findOneBy({society_id:societyId, user_id:userId})
+
+  if(request){
+   await this.requestRepository.remove(request);
+
+   //adding the user to a society
+  const newMember= await this.userToSocietyRepository.create({society_id:societyId, user_id:userId})
+
+  return await this.userToSocietyRepository.save(newMember);
+  }
+else{
+        throw new HttpException({
+            status: HttpStatus.FORBIDDEN,
+            error: 'cannot find the user request',
+          }, 403);
+  }
  }
 
 }

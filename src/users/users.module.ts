@@ -5,10 +5,12 @@ import { UsersService } from './services/users/users.service';
 import { User } from 'src/typeorm/entities/user';
 import { MiddlewareConsumer, NestModule } from '@nestjs/common/interfaces';
 import { LoggerMiddleware } from 'src/logger/logger.middleware';
+import { Request } from 'src/typeorm/entities/Requests';
+import { User_Society } from 'src/typeorm/entities/User_Society';
 
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User])],
+  imports: [TypeOrmModule.forFeature([User, Request, User_Society])],
   controllers: [UsersController],
   providers: [UsersService]
 })

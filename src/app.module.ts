@@ -15,6 +15,7 @@ import { postToSociety } from './typeorm/entities/post_to_society';
 import { PatroneModule } from './patrone/patrone.module';
 import { SocietyLeaderModule } from './society-leader/society-leader.module';
 import { Society_Leader } from './typeorm/entities/SocietyLeader';
+import { SocietyToEvent } from './typeorm/entities/society_to_event';
 
 
 @Module({
@@ -25,7 +26,7 @@ import { Society_Leader } from './typeorm/entities/SocietyLeader';
     username:'root',
     password:'',
     database:'uni_society',
-    entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader],
+    entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent],
     synchronize:true, 
     autoLoadEntities: true
   }), UsersModule, SocietiesModule, EventsModule, PostModule, PatroneModule, SocietyLeaderModule],

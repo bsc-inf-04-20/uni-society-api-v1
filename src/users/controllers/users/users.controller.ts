@@ -72,5 +72,10 @@ exitSociety(@Param('userId',ParseIntPipe) userId:number, @Param('societyId', Par
     return this.UsersService.exitSociety(userId,societyId);
 }
 
+@Post(':userId/societies/:societyId')
+addToSociety(@Param('userId',ParseIntPipe) userId:number, @Param('societyId', ParseIntPipe) societyId:number){
+    return this.UsersService.addToSociety(userId,societyId);
+}
+
 
 }
