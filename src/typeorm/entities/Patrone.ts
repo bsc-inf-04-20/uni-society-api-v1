@@ -5,8 +5,11 @@ import { User } from "./user";
 @Entity({name:'patrone'})
 export class Patrone{
 
-@PrimaryGeneratedColumn()
-supervision_id:number;
+@PrimaryColumn()
+user_id:number;
+
+@PrimaryColumn()
+society_id:number;
 
 @OneToOne(type=>User)
 @JoinColumn({ referencedColumnName: "id" ,name:"user_id"})

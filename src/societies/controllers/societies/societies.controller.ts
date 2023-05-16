@@ -48,4 +48,11 @@ getSocietyRequest(
   return this.SocietiesService.getRequests(id);
 }
 
+@Get(':id/members')
+getSocietyMembers(
+  @Param('societyId', ParseIntPipe) societyId:number
+){
+  return this.SocietiesService.findMembers(societyId);
+}
+
 }

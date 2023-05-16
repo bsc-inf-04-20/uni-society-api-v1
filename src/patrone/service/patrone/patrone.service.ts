@@ -25,8 +25,10 @@ export class PatroneService {
        return this.entityManager.query(query);
     }
 
-    getPosts(userId:number){
-        const query=`select details from user`
+    async getPosts(userId:number){
+        const query=`select details from patrone inner join post on patrone.society_id=post.society_id where patrone.user_id=${userId};`;
+        
+      return await  this.entityManager.query(query);
     }
 
 

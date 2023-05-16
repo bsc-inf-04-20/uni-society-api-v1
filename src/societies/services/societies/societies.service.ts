@@ -83,6 +83,12 @@ async getRequests(society_id:number){
       return result;
 }
 
+async findMembers(id:number){
+    const quary=`select user.username, user.email from user inner join user_society on user.id=user_society.user_id where user_society.society_id=${id}`
+
+    return this.entityManager.query(quary);
+}
+
 
 
 }

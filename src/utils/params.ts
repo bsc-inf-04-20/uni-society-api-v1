@@ -2,12 +2,14 @@
 
 export type createUserParams={
     username:string,
+    email:string,
     password:string,
     yearOfStudy:number
 }
 
 export type updateUserParams={
      username: string,
+     email:string,
      password: string,
      yearOfStudy: number
 }

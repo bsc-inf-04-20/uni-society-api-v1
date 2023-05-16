@@ -7,6 +7,7 @@ import { AuthGuard } from 'src/users/guards/auth/auth.guard';
 import { LoggingInterceptor } from 'src/users/interceptors/logging/logging.interceptor';
 import { createRequestDto } from './../../dtos/createRequest.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common/pipes';
 
 @Controller('users')
 @UseGuards(AuthGuard)
@@ -36,7 +37,7 @@ getUsers(){
 
 @Post()
 @UsePipes(new ValidateCreateUserPipe(createUserSchema))
-async createUser(@Body() createUserDto: createUserDto){
+async createUser(@Body( new ValidationPipe()) createUserDto: createUserDto){
     return this.UsersService.createUser(createUserDto);
 }
 
