@@ -17,6 +17,8 @@ import { SocietyLeaderModule } from './society-leader/society-leader.module';
 import { Society_Leader } from './typeorm/entities/SocietyLeader';
 import { SocietyToEvent } from './typeorm/entities/society_to_event';
 import { AuthModule } from './auth/auth.module';
+import { ViteMailModule } from 'vitemail';
+import { MailModule } from './mail/mail.module';
 
 
 @Module({
@@ -30,7 +32,11 @@ import { AuthModule } from './auth/auth.module';
     entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent],
     synchronize:true, 
     autoLoadEntities: true
-  }), UsersModule, SocietiesModule, EventsModule, PostModule, PatroneModule, SocietyLeaderModule, AuthModule],
+  }), UsersModule, SocietiesModule, EventsModule, PostModule, PatroneModule, SocietyLeaderModule, AuthModule, 
+  ViteMailModule.authProvider({
+    email:'tupomojoo@gmail.com',
+   password:'pyypyjqekfeumemj'
+  }), MailModule],
   controllers: [],
   providers: [],
 })
