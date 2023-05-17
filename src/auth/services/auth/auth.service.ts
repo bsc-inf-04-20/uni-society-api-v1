@@ -1,12 +1,13 @@
 import { HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from './../../../users/services/users/users.service';
-
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
 
     constructor(
-       private UsersService:UsersService
+       private UsersService:UsersService,
+       private jwtService:JwtService
     ){}
     async validateUser(email:string,password:string): Promise<any>{
 
@@ -20,4 +21,6 @@ export class AuthService {
         }
          return null;
     }
+
+
 }
