@@ -1,9 +1,11 @@
-import { Body, Controller, Post, Param, ParseIntPipe, Get } from '@nestjs/common';
+import { Body, Controller, Post, Param, ParseIntPipe, Get, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { PostService } from './../../services/post/post.service';
 import { createPostDto} from './../../createPost.dto';
+import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
 
 @ApiTags('post')
+@UseGuards(AuthenticatedGuard)
 @Controller()
 export class PostController {
 

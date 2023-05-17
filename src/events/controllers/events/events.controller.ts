@@ -1,10 +1,12 @@
-import { Controller, Param, Post, ParseIntPipe, Body, Delete, Patch } from '@nestjs/common';
+import { Controller, Param, Post, ParseIntPipe, Body, Delete, Patch, UseGuards } from '@nestjs/common';
 import { EventsService } from 'src/events/services/events/events.service';
 import { createEventDto } from './../../createEvent.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
 
 @ApiTags('events')
 @Controller()
+@UseGuards(AuthenticatedGuard)
 export class EventsController {
 
     constructor(

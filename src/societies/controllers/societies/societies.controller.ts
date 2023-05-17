@@ -5,9 +5,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
 
 
-@ApiTags('Society')
+@ApiTags('Society')  
 @Controller('societies')
-@UseGuards(AuthenticatedGuard)
 export class SocietiesController {
     constructor(private SocietiesService: SocietiesService){}
 
