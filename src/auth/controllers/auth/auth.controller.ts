@@ -1,22 +1,30 @@
 import { Controller,Request } from '@nestjs/common';
-import { Body, Post, UseGuards } from '@nestjs/common/decorators';
+import { Body, Get, Post, UseGuards } from '@nestjs/common/decorators';
 import { loginDto } from 'src/auth/loginDto';
 import { AuthGuard } from '@nestjs/passport';
 import { AuthService } from './../../services/auth/auth.service';
 import { LocalAuthGuard } from 'src/auth/utils/local-auth.guard';
 import { UsersService } from 'src/users/services/users/users.service';
+import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
+import { get } from 'http';
 
 @Controller('auth')
 export class AuthController {
 
     constructor(
-       private  UsersService:UsersService
+       private  UsersService:UsersService,
     ){}
 
     @UseGuards(LocalAuthGuard)
     @Post('login')
     login(@Request() req, @Body() loginDto:loginDto):any {
-          return req.user;
+          return {msg:'logged in!'};
 
+    }
+
+    @UseGuards(AuthenticatedGuard)
+    @Get('protected')
+    getHello(@Request() req): string{
+        return req.user;
     }
 }

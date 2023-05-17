@@ -1,11 +1,13 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards } from '@nestjs/common';
 import { createSocietyDto } from 'src/societies/dtos/createSociety.dto';
 import { SocietiesService } from 'src/societies/services/societies/societies.service';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
 
 
 @ApiTags('Society')
 @Controller('societies')
+@UseGuards(AuthenticatedGuard)
 export class SocietiesController {
     constructor(private SocietiesService: SocietiesService){}
 
@@ -48,7 +50,7 @@ getSocietyRequest(
   return this.SocietiesService.getRequests(id);
 }
 
-@Get(':id/members')
+@Get(':societyId/members')
 getSocietyMembers(
   @Param('societyId', ParseIntPipe) societyId:number
 ){

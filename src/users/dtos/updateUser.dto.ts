@@ -10,6 +10,13 @@ export class updateUserDto{
     username: string;
 
     @ApiProperty({
+      type:String,
+      description:'A string is required'
+    })
+    name:string
+
+
+    @ApiProperty({
         type:String,
         description:'A string is required'
       })
