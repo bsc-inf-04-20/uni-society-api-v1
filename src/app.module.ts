@@ -16,6 +16,7 @@ import { PatroneModule } from './patrone/patrone.module';
 import { SocietyLeaderModule } from './society-leader/society-leader.module';
 import { Society_Leader } from './typeorm/entities/SocietyLeader';
 import { SocietyToEvent } from './typeorm/entities/society_to_event';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -29,7 +30,7 @@ import { SocietyToEvent } from './typeorm/entities/society_to_event';
     entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent],
     synchronize:true, 
     autoLoadEntities: true
-  }), UsersModule, SocietiesModule, EventsModule, PostModule, PatroneModule, SocietyLeaderModule],
+  }), UsersModule, SocietiesModule, EventsModule, PostModule, PatroneModule, SocietyLeaderModule, AuthModule],
   controllers: [],
   providers: [],
 })

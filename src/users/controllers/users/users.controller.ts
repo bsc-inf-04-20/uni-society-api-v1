@@ -3,14 +3,12 @@ import { updateUserDto } from './../../dtos/updateUser.dto';
 import { createUserDto, createUserSchema } from './../../dtos/createUser.dto';
 import { UsersService } from './../../services/users/users.service';
 import { ValidateCreateUserPipe } from 'src/users/pipes/validate-create-user/validate-create-user.pipe';
-import { AuthGuard } from 'src/users/guards/auth/auth.guard';
 import { LoggingInterceptor } from 'src/users/interceptors/logging/logging.interceptor';
 import { createRequestDto } from './../../dtos/createRequest.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common/pipes';
 
 @Controller('users')
-@UseGuards(AuthGuard)
 @UseInterceptors(LoggingInterceptor)
 
 @ApiTags('User')
