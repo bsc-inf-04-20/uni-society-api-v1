@@ -34,4 +34,5 @@ async updateEvent(event_id:number, updateEventDetails:createEventDto ){
 
 }
 
+
 }

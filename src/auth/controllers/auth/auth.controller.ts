@@ -7,7 +7,9 @@ import { LocalAuthGuard } from 'src/auth/utils/local-auth.guard';
 import { UsersService } from 'src/users/services/users/users.service';
 import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
 import { get } from 'http';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Authentification(START WITH THIS ENDPOINT BEFORE ANY OTHER)')
 @Controller('auth')
 export class AuthController {
 

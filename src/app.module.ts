@@ -35,7 +35,7 @@ import { MailModule } from './mail/mail.module';
   }), UsersModule, SocietiesModule, EventsModule, PostModule, PatroneModule, SocietyLeaderModule, AuthModule, 
   ViteMailModule.authProvider({
     email:'tupomojoo@gmail.com',
-   password:'pyypyjqekfeumemj'
+    password:'pyypyjqekfeumemj'
   }), MailModule],
   controllers: [],
   providers: [],

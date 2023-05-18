@@ -28,4 +28,5 @@ deleteEvent(@Param('eventId', ParseIntPipe) eventId:number){
     return this.eventService.updateEvent(eventId, updateEventDetails);
  }
 
+
 }
