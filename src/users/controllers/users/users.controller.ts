@@ -33,7 +33,7 @@ export class UsersController {
         return this.UsersService.findUser(id);
     }
 
-    @UseGuards(AuthenticatedGuard)
+    
     @Post()
     @UsePipes(new ValidateCreateUserPipe(createUserSchema))
     async createUser(@Body( new ValidationPipe()) createUserDto: createUserDto){

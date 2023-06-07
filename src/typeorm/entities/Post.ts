@@ -12,7 +12,7 @@ export class Post{
     @Column()
     details:string;
 
-    @CreateDateColumn()
+    @Column()
     date:Date;
 
     @ManyToOne(type=>Society)
