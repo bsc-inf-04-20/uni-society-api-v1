@@ -19,12 +19,15 @@ import { SocietyToEvent } from './typeorm/entities/society_to_event';
 import { AuthModule } from './auth/auth.module';
 import { ViteMailModule } from 'vitemail';
 import { MailModule } from './mail/mail.module';
+import { ConfigModule } from '@nestjs/config';
 
 
 @Module({
-  imports: [TypeOrmModule.forRoot({
+  imports: [
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRoot({
     type:'mysql',
-    host:'localhost',
+    host: process.env.DATABASE_TYPE ,
     port:3306,
     username:'root',
     password:'',

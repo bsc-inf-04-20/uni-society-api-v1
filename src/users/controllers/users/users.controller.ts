@@ -12,7 +12,6 @@ import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
 @Controller('users')
 @UseInterceptors(LoggingInterceptor)
 @ApiTags('User')
-@UseGuards(AuthenticatedGuard)
 export class UsersController {
 
     constructor(private UsersService: UsersService){}
@@ -22,6 +21,7 @@ export class UsersController {
     findAll(){
         return this.UsersService.findUsers();
     }
+
 
     @Get()
     getUsers(){
@@ -33,14 +33,14 @@ export class UsersController {
         return this.UsersService.findUser(id);
     }
 
-
+    @UseGuards(AuthenticatedGuard)
     @Post()
     @UsePipes(new ValidateCreateUserPipe(createUserSchema))
     async createUser(@Body( new ValidationPipe()) createUserDto: createUserDto){
         return this.UsersService.createUser(createUserDto);
     }
 
-
+    @UseGuards(AuthenticatedGuard)
     @Patch(':id')
     async updateUSer(
     @Param('id', ParseIntPipe) id:number, 
@@ -48,36 +48,37 @@ export class UsersController {
         await this.UsersService.updateUser(id, updateUserDto)
    }
 
-
+   @UseGuards(AuthenticatedGuard)
     @Delete(':id')
     deleteUser(@Param('id', ParseIntPipe) id:number){
         return this.UsersService.deleteUser(id)
     }
 
-
+    @UseGuards(AuthenticatedGuard)
     @Post(':id/requests')
     createUserRequest(@Param('id', ParseIntPipe) id:number,@Body() createRequestDto:createRequestDto){
         return this.UsersService.createUserRequest(id, createRequestDto);
     }
 
+    @UseGuards(AuthenticatedGuard)
     @Get(':id/requests')
     getUserRequests(@Param('id',ParseIntPipe) id:number){
         return this.UsersService.getUserRequest(id);
     }
 
-
+    @UseGuards(AuthenticatedGuard)
     @Get(':userId/societies')
     getUserSocieties(@Param('userId',ParseIntPipe) userId:number){
         return this.UsersService.getSocieties(userId);
     }
 
-
+    @UseGuards(AuthenticatedGuard)
     @Delete(':userId/societies/:societyId')
     exitSociety(@Param('userId',ParseIntPipe) userId:number, @Param('societyId', ParseIntPipe) societyId:number){
         return this.UsersService.exitSociety(userId,societyId);
     }
 
-
+    @UseGuards(AuthenticatedGuard)
     @Post(':userId/societies/:societyId')
     addToSociety(@Param('userId',ParseIntPipe) userId:number, @Param('societyId', ParseIntPipe) societyId:number){
         return this.UsersService.addToSociety(userId,societyId);

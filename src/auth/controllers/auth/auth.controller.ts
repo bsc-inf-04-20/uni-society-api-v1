@@ -17,10 +17,10 @@ export class AuthController {
        private  UsersService:UsersService,
     ){}
 
-    @UseGuards(LocalAuthGuard)
+    
     @Post('login')
     login(@Request() req, @Body() loginDto:loginDto):any {
-          return {msg:'logged in!'};
+          return 'logged in!';
 
     }
 
