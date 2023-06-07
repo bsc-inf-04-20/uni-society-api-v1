@@ -27,11 +27,11 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
     type:'mysql',
-    host: 'localhost' ,
+    host: 'sql205.infinityfree.com' ,
     port:3306,
     username:'root',
     password:'',
-    database:'uni_society',
+    database:'if0_34375297_uni_society',
     entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent],
     synchronize:true, 
     autoLoadEntities: true
