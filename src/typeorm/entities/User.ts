@@ -1,6 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, Repository, OneToMany } from "typeorm";
 import { Request } from "./Requests";
 
+//changed the User to user
+
 @Entity({name: 'user'})
 export class User{
     @PrimaryGeneratedColumn()
