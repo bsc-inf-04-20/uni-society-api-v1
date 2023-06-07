@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import {TypeOrmModule} from '@nestjs/typeorm';
-import { User } from './typeorm/entities/user';
+import { User } from './typeorm/entities/User';
 import { UsersModule } from './users/users.module';
 import { SocietiesModule } from './societies/societies.module';
 import { Society } from './typeorm/entities/Society';

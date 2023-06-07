@@ -1,6 +1,6 @@
 import { Entity, Index, JoinColumn, ManyToOne, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Society } from "./Society";
-import { User } from "./user";
+import { User } from "./User";
 
 @Entity({name:'request'})
 export class Request{

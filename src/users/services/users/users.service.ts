@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable, ParseIntPipe } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { EntityManager, Repository } from 'typeorm';
-import { User } from 'src/typeorm/entities/user';
+import { User } from 'src/typeorm/entities/User';
 import { createUserParams, updateUserParams } from 'src/utils/params';
 import { createRequestDto } from './../../dtos/createRequest.dto';
 import { Request } from 'src/typeorm/entities/Requests';

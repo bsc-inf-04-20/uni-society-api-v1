@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Society } from "./Society";
-import { User } from "./user";
+import { User } from "./User";
 
 
 @Entity({name:"post"})

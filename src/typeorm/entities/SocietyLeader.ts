@@ -1,6 +1,6 @@
 import { Entity, JoinColumn, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Society } from "./Society";
-import { User } from "./user";
+import { User } from "./User";
 
 @Entity({name:'society_leader'})
 export class Society_Leader{
