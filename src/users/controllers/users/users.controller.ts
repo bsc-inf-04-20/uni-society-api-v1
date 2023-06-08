@@ -16,7 +16,7 @@ export class UsersController {
 
     constructor(private UsersService: UsersService){}
 
-    @UseGuards(AuthenticatedGuard)
+  
     @Get()
     findAll(){
         return this.UsersService.findUsers();
