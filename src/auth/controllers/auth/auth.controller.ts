@@ -17,7 +17,7 @@ export class AuthController {
        private  UsersService:UsersService,
     ){}
 
-    
+    @UseGuards(LocalAuthGuard)
     @Post('login')
     login(@Request() req, @Body() loginDto:loginDto):any {
           return 'logged in!';
