@@ -16,13 +16,13 @@ export class UsersController {
 
     constructor(private UsersService: UsersService){}
 
-  
+    @UseGuards(AuthenticatedGuard)
     @Get()
     findAll(){
         return this.UsersService.findUsers();
     }
 
-
+    @UseGuards(AuthenticatedGuard)
     @Get()
     getUsers(){
         return this.UsersService.findUsers();
