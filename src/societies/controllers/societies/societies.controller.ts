@@ -6,6 +6,7 @@ import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
 
 
 @ApiTags('Society')  
+@UseGuards(AuthenticatedGuard)
 @Controller('societies')
 export class SocietiesController {
     constructor(private SocietiesService: SocietiesService){}
