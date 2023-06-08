@@ -24,4 +24,10 @@ export class AuthController {
 
     }
 
+    @UseGuards(AuthenticatedGuard)
+    @Get('protected')
+    getHello(@Request() req): string{
+        return req.user
+    }
+
 }
