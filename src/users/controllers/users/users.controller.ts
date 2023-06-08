@@ -10,7 +10,7 @@ import { ValidationPipe } from '@nestjs/common/pipes';
 import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
 
 @Controller('users')
-@UseInterceptors(LoggingInterceptor)
+
 @ApiTags('User')
 export class UsersController {
 
