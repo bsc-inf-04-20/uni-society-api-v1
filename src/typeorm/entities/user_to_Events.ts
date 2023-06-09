@@ -3,8 +3,8 @@ import { Event } from "./Event";
 import { User } from "./User";
 
 
-@Entity({name:'user_event', schema:'public' })
-export class User_to_Event {
+@Entity({name:'user_to_events', schema:'public' })
+export class UserEvents {
 
     @PrimaryColumn()
     user_id:number;

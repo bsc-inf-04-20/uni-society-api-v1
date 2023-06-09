@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Event } from 'src/typeorm/entities/Event';
-import { User_to_Event } from 'src/typeorm/entities/user_to_Events';
+import { UserEvents } from 'src/typeorm/entities/user_to_Events';
 import { EntityManager, Repository } from 'typeorm';
 import { createEventDto } from './../../createEvent.dto';
 import { User_event } from './../../user_event';
@@ -13,7 +13,7 @@ import { User_event } from './../../user_event';
 export class EventsService {
 constructor(
      @InjectRepository(Event) private eventRepository:Repository<Event>,
-     @InjectRepository(User_to_Event) private userEventRepository:Repository<User_to_Event>,
+     @InjectRepository(UserEvents) private userEventRepository:Repository<UserEvents>,
       private entityManager:EntityManager
 ){}
 
@@ -57,7 +57,7 @@ async updateEvent(event_id:number, updateEventDetails:createEventDto ){
 
    async getMembers(event_id:number){
 
-    const query=`select * from user inner join user_event on user.id=user_event.user_id;`
+    const query=`select * from user inner join user_to_events on user.id=user_to_events.user_id;`
      
     return await this.entityManager.query(query);
    }
