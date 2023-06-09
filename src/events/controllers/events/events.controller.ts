@@ -1,4 +1,4 @@
-import { Controller, Param, Post, ParseIntPipe, Body, Delete, Patch, UseGuards } from '@nestjs/common';
+import { Controller, Param, Post, ParseIntPipe, Body, Delete, Patch, UseGuards, Get } from '@nestjs/common';
 import { EventsService } from 'src/events/services/events/events.service';
 import { createEventDto } from './../../createEvent.dto';
 import { ApiTags } from '@nestjs/swagger';
@@ -12,6 +12,11 @@ export class EventsController {
     constructor(
         private eventService:EventsService
     ){}
+
+@Get('events')
+ getEvents(){
+    return this.eventService.getEvents();
+}
 
 @Post('societies/:societyId/events')
 createEvent(@Param('societyId', ParseIntPipe) societyId:number, @Body() createEventDto:createEventDto){
@@ -32,6 +37,16 @@ deleteEvent(@Param('eventId', ParseIntPipe) eventId:number){
   joinEvent(@Param('eventId', ParseIntPipe) eventId:number, @Param('userId', ParseIntPipe) userId:number){
     return this.eventService.joinEvent(userId, eventId);
   }
+
+  @Get('events/:eventId')
+   async getEvent(@Param('eventId', ParseIntPipe) eventId:number){
+    return await this.eventService.getEvent(eventId);
+   }
+
+   @Get('event/:eventId/users')
+    getEventMembers(@Param('eventId', ParseIntPipe) eventId:number){
+        return this.eventService.getMembers(eventId);
+    }
 
 
 }

@@ -22,6 +22,10 @@ async createEvent(societyId:number,createEventDetails:createEventDto){
  return this.entityManager.query(query);
 }
 
+getEvents(){
+    return this.eventRepository.find();
+}
+
 async deleteEvent(event_id:number){
 
     const query=`delete from event where event_id=${event_id};`;
@@ -43,6 +47,14 @@ async updateEvent(event_id:number, updateEventDetails:createEventDto ){
     const newUserEvent= this.userEventRepository.create({...entry});
 
     return this.userEventRepository.save(newUserEvent);
+   }
+
+   async getEvent(event_id:number){
+    return await this.eventRepository.findOneBy({event_id});
+   }
+
+   async getMembers(event_id:number){
+
    }
 
 
