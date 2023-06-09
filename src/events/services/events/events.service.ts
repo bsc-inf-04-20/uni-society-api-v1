@@ -55,6 +55,9 @@ async updateEvent(event_id:number, updateEventDetails:createEventDto ){
 
    async getMembers(event_id:number){
 
+    const query=`select * from user inner join user_event on user.id=user_event.user_id;`
+     
+    return await this.entityManager.query(query);
    }
 
 

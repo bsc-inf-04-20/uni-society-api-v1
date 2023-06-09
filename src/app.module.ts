@@ -22,6 +22,7 @@ import { MailModule } from './mail/mail.module';
 import { ConfigModule } from '@nestjs/config';
 import { Comment } from './typeorm/entities/comment';
 import { CommentsModule } from './comments/comments.module';
+import { User_event } from './events/user_event';
 
 
 @Module({
@@ -36,7 +37,7 @@ import { CommentsModule } from './comments/comments.module';
     username:'sql10624337',
     password:'8BpFrZxlHd',
     database:'sql10624337',
-    entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent, Comment],
+    entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent, Comment, User_event],
     synchronize: false, 
     autoLoadEntities: true
   }), UsersModule, SocietiesModule, EventsModule, PostModule, PatroneModule, SocietyLeaderModule, AuthModule, 
