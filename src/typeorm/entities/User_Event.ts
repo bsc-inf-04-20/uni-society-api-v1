@@ -3,7 +3,7 @@ import { Event } from "./Event";
 import { User } from "./User";
 
 
-@Entity({name:'user_Society', schema:'public' })
+@Entity({name:'user_event', schema:'public' })
 export class UserEvent {
 
     @PrimaryColumn()
