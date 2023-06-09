@@ -3,7 +3,7 @@ import { Event } from "./Event";
 import { User } from "./User";
 
 
-@Entity({name:'user_event', schema:'public' })
+@Entity({name:'user_Event', schema:'public' })
 export class UserEvent {
 
     @PrimaryColumn()
@@ -17,7 +17,7 @@ export class UserEvent {
     user:User;
 
     @ManyToOne(type=>Event)
-    @JoinColumn({referencedColumnName: "event_id", name:"event_id" })
+    @JoinColumn({referencedColumnName: "event_", name:"event_id" })
     event: Event;
 
 }
