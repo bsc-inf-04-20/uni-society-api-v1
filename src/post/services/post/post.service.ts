@@ -57,6 +57,14 @@ export class PostService {
 
         const queryCmd=await this.entityManager.query(fetchrequestQuery);
 
+        queryCmd.map((post,index)=>{
+
+            const postComments=`select * from comment where post_id=${queryCmd[index].post_id}`
+
+           return {queryCmd,comments:[postComments]}
+        })
+        
+
         return queryCmd;
     }
 

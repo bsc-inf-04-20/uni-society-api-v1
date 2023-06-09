@@ -7,7 +7,7 @@ import { LocalAuthGuard } from 'src/auth/utils/local-auth.guard';
 import { UsersService } from 'src/users/services/users/users.service';
 import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
 import { get } from 'http';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Authentification(START WITH THIS ENDPOINT BEFORE ANY OTHER)')
 @Controller('auth')
@@ -17,11 +17,11 @@ export class AuthController {
        private  UsersService:UsersService,
     ){}
 
+    @ApiOperation({summary:'login'})
     @UseGuards(LocalAuthGuard)
     @Post('login')
     login(@Request() req, @Body() loginDto:loginDto):any {
           return 'logged in!';
-
     }
 
     @UseGuards(AuthenticatedGuard)

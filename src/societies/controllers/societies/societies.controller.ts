@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards } from '@nestjs/common';
 import { createSocietyDto } from 'src/societies/dtos/createSociety.dto';
 import { SocietiesService } from 'src/societies/services/societies/societies.service';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
 
 
@@ -11,21 +11,25 @@ import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
 export class SocietiesController {
     constructor(private SocietiesService: SocietiesService){}
 
+@ApiOperation({summary:'get registered societies'})
 @Get()
 findAll(){
     return this.SocietiesService.getSocieties();
 }
 
+@ApiOperation({summary:'get societies by id'})
 @Get(':id')
 findSociety(@Param('id', ParseIntPipe) id:number){
     return this.SocietiesService.getSociety(id); 
 }
 
+@ApiOperation({summary:'create society'})
 @Post()
 createSociety(@Body() createSocietyDto:createSocietyDto){
   return this.SocietiesService.createSociety(createSocietyDto);
 }
 
+@ApiOperation({summary:'edit society info'})
 @Patch(':id')
 editSociety(
     @Body() updateSocietyDto:createSocietyDto,
@@ -36,6 +40,7 @@ editSociety(
 
 }
 
+@ApiOperation({summary:'unregistered society'})
 @Delete(':id')
 deleteSociety(
     @Param('id', ParseIntPipe) id:number
@@ -43,6 +48,7 @@ deleteSociety(
    return this.SocietiesService.deleteSociety(id);
 }
 
+@ApiOperation({summary:'get society requests'})
 @Get(':id/requests')
 getSocietyRequest(
   @Param('id',ParseIntPipe) id:number
@@ -50,6 +56,7 @@ getSocietyRequest(
   return this.SocietiesService.getRequests(id);
 }
 
+@ApiOperation({summary:'get society members'})
 @Get(':societyId/members')
 getSocietyMembers(
   @Param('societyId', ParseIntPipe) societyId:number

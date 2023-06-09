@@ -20,6 +20,17 @@ export class CommentsService {
 
     try{
        const post=await this.postsRepository.findOneBy({post_id})
+
+       const newComment={
+        content:createCommentDto.content,
+         post_id:post.post_id,
+         username:await (await this.userRepository.findOneBy({id})).username
+       }
+
+        const query=`insert into comment(content,post_id,username) values('${newComment.content}', ${newComment.post_id}, '${newComment.username}');`
+
+        return await this.entityManager.query(query);
+
            }catch(error){
              throw new HttpException({
             status:HttpStatus.NOT_FOUND,
@@ -28,26 +39,7 @@ export class CommentsService {
             cause:error
           })}
         //getting the user
-        let user=null;
-        try{
-         user=await this.userRepository.findOneBy({id})
-          }catch(error){
-                throw new HttpException({
-                    status:HttpStatus.NOT_FOUND,
-                    error:'this user does not exist'
-                }, HttpStatus.NOT_FOUND, {
-                    cause:error
-                })}
-
-        const newComment={
-            content:createCommentDto.content,
-             post_id:post_id, 
-             username:user.username
-            };
-
-      const newSavedComment=await this.commentsRepository.create({...newComment});
-    
-      return await this.commentsRepository.save(newSavedComment);
+   
  }
 
  async updateComment(comment_id:number, id:number,createCommentDto:createCommentDto){
@@ -72,7 +64,7 @@ export class CommentsService {
 
  async getComments(post_id:number){
 
-  const query=`select * from comment where post_id=${post_id}`;
+  const query=`select * from comment`;
 
   return await this.entityManager.query(query);
 

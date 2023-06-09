@@ -5,7 +5,7 @@ import { UsersService } from './../../services/users/users.service';
 import { ValidateCreateUserPipe } from 'src/users/pipes/validate-create-user/validate-create-user.pipe';
 import { LoggingInterceptor } from 'src/users/interceptors/logging/logging.interceptor';
 import { createRequestDto } from './../../dtos/createRequest.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common/pipes';
 import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
 
@@ -16,30 +16,28 @@ export class UsersController {
 
     constructor(private UsersService: UsersService){}
 
-    @UseGuards(AuthenticatedGuard)
-    @Get()
-    findAll(){
-        return this.UsersService.findUsers();
-    }
 
+    @ApiOperation({summary:'get all users'})
     @UseGuards(AuthenticatedGuard)
     @Get()
     getUsers(){
         return this.UsersService.findUsers();
     }
 
+    @ApiOperation({summary:'get user by id'})
     @Get(':id')
     getuser(@Param('id', ParseIntPipe) id:number){
         return this.UsersService.findUser(id);
     }
 
-    
+    @ApiOperation({summary:'create user'})
     @Post()
     @UsePipes(new ValidateCreateUserPipe(createUserSchema))
     async createUser(@Body( new ValidationPipe()) createUserDto: createUserDto){
         return this.UsersService.createUser(createUserDto);
     }
 
+    @ApiOperation({summary:'update a user'})
     @UseGuards(AuthenticatedGuard)
     @Patch(':id')
     async updateUSer(
@@ -48,36 +46,42 @@ export class UsersController {
         await this.UsersService.updateUser(id, updateUserDto)
    }
 
+   @ApiOperation({summary:'delete user'})
    @UseGuards(AuthenticatedGuard)
     @Delete(':id')
     deleteUser(@Param('id', ParseIntPipe) id:number){
         return this.UsersService.deleteUser(id)
     }
 
+    @ApiOperation({summary:'create user requests'})
     @UseGuards(AuthenticatedGuard)
     @Post(':id/requests')
     createUserRequest(@Param('id', ParseIntPipe) id:number,@Body() createRequestDto:createRequestDto){
         return this.UsersService.createUserRequest(id, createRequestDto);
     }
 
+    @ApiOperation({summary:'get user requests'})
     @UseGuards(AuthenticatedGuard)
     @Get(':id/requests')
     getUserRequests(@Param('id',ParseIntPipe) id:number){
         return this.UsersService.getUserRequest(id);
     }
 
+    @ApiOperation({summary:'get user\'s societies'})
     @UseGuards(AuthenticatedGuard)
     @Get(':userId/societies')
     getUserSocieties(@Param('userId',ParseIntPipe) userId:number){
         return this.UsersService.getSocieties(userId);
     }
 
+    @ApiOperation({summary:'exit society'})
     @UseGuards(AuthenticatedGuard)
     @Delete(':userId/societies/:societyId')
     exitSociety(@Param('userId',ParseIntPipe) userId:number, @Param('societyId', ParseIntPipe) societyId:number){
         return this.UsersService.exitSociety(userId,societyId);
     }
 
+    @ApiOperation({summary:'accepting user to society'})
     @UseGuards(AuthenticatedGuard)
     @Post(':userId/societies/:societyId')
     addToSociety(@Param('userId',ParseIntPipe) userId:number, @Param('societyId', ParseIntPipe) societyId:number){
