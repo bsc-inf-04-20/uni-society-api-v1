@@ -39,7 +39,7 @@ import { UserEvents} from './typeorm/entities/user_to_Events';
     password:'8BpFrZxlHd',
     database:'sql10624337',
     entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent, Comment, UserEvents],
-    synchronize: false, 
+    synchronize: true, 
     autoLoadEntities: true
   }), UsersModule, SocietiesModule, EventsModule, PostModule, PatroneModule, SocietyLeaderModule, AuthModule, 
   ViteMailModule.authProvider({
