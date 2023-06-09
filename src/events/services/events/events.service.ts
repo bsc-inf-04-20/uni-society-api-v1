@@ -4,6 +4,7 @@ import { Event } from 'src/typeorm/entities/Event';
 import { EntityManager, Repository } from 'typeorm';
 import { createEventDto } from './../../createEvent.dto';
 import { User_event } from './../../user_event';
+import { User_Event } from './../../../typeorm/entities/userEvent';
 
 
 
@@ -11,7 +12,7 @@ import { User_event } from './../../user_event';
 export class EventsService {
 constructor(
      @InjectRepository(Event) private eventRepository:Repository<Event>,
-     @InjectRepository(User_event) private userEventRepository:Repository<User_event>,
+     @InjectRepository(User_Event) private userEventRepository:Repository<User_Event>,
       private entityManager:EntityManager
 ){}
 
