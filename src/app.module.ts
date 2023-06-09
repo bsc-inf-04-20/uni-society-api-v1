@@ -38,7 +38,7 @@ import { User_event } from './events/user_event';
     password:'8BpFrZxlHd',
     database:'sql10624337',
     entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent, Comment, User_event],
-    synchronize: true, 
+    synchronize: false, 
     autoLoadEntities: true
   }), UsersModule, SocietiesModule, EventsModule, PostModule, PatroneModule, SocietyLeaderModule, AuthModule, 
   ViteMailModule.authProvider({
