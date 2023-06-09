@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Event } from 'src/typeorm/entities/Event';
-import { User_Event } from 'src/typeorm/entities/userEvent';
+import { User_to_Event } from 'src/typeorm/entities/user_to_Events';
 import { EventsController } from './controllers/events/events.controller';
 import { EventsService } from './services/events/events.service';
-import { User_event } from './user_event';
+
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Event, User_Event])],
+  imports: [TypeOrmModule.forFeature([Event, User_to_Event])],
   controllers: [EventsController],
   providers: [EventsService]
 })

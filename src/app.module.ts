@@ -23,6 +23,7 @@ import { ConfigModule } from '@nestjs/config';
 import { Comment } from './typeorm/entities/comment';
 import { CommentsModule } from './comments/comments.module';
 import { User_event } from './events/user_event';
+import { User_to_Event } from './typeorm/entities/user_to_Events';
 
 
 @Module({
@@ -37,7 +38,7 @@ import { User_event } from './events/user_event';
     username:'sql10624337',
     password:'8BpFrZxlHd',
     database:'sql10624337',
-    entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent, Comment, User_event],
+    entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent, Comment, User_to_Event],
     synchronize: true, 
     autoLoadEntities: true
   }), UsersModule, SocietiesModule, EventsModule, PostModule, PatroneModule, SocietyLeaderModule, AuthModule, 

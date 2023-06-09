@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Event } from 'src/typeorm/entities/Event';
+import { User_to_Event } from 'src/typeorm/entities/user_to_Events';
 import { EntityManager, Repository } from 'typeorm';
 import { createEventDto } from './../../createEvent.dto';
 import { User_event } from './../../user_event';
-import { User_Event } from './../../../typeorm/entities/userEvent';
+
 
 
 
@@ -12,7 +13,7 @@ import { User_Event } from './../../../typeorm/entities/userEvent';
 export class EventsService {
 constructor(
      @InjectRepository(Event) private eventRepository:Repository<Event>,
-     @InjectRepository(User_Event) private userEventRepository:Repository<User_Event>,
+     @InjectRepository(User_to_Event) private userEventRepository:Repository<User_to_Event>,
       private entityManager:EntityManager
 ){}
 
