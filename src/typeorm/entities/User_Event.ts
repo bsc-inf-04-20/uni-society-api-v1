@@ -17,7 +17,7 @@ export class UserEvent {
     user:User;
 
     @ManyToOne(type=>Event)
-    @JoinColumn({referencedColumnName: "event", name:"event_id" })
+    @JoinColumn({referencedColumnName: "event_id", name:"event_id" })
     event: Event;
 
 }
