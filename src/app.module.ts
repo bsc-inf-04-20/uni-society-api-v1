@@ -20,11 +20,15 @@ import { AuthModule } from './auth/auth.module';
 import { ViteMailModule } from 'vitemail';
 import { MailModule } from './mail/mail.module';
 import { ConfigModule } from '@nestjs/config';
+import { Comment } from './typeorm/entities/comment';
+import { CommentsModule } from './comments/comments.module';
 
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal:true
+    }),
     TypeOrmModule.forRoot({
     type:'mysql',
     host: 'sql10.freemysqlhosting.net' ,
@@ -32,14 +36,14 @@ import { ConfigModule } from '@nestjs/config';
     username:'sql10624337',
     password:'8BpFrZxlHd',
     database:'sql10624337',
-    entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent],
+    entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent, Comment],
     synchronize: false, 
     autoLoadEntities: true
   }), UsersModule, SocietiesModule, EventsModule, PostModule, PatroneModule, SocietyLeaderModule, AuthModule, 
   ViteMailModule.authProvider({
     email:'tupomojoo@gmail.com',
     password:'pyypyjqekfeumemj'
-  }), MailModule],
+  }), MailModule, CommentsModule],
   controllers: [],
   providers: [],
 })

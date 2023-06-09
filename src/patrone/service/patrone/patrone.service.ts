@@ -31,6 +31,12 @@ export class PatroneService {
       return await  this.entityManager.query(query);
     }
 
+    async removePatrone(user_id:number){
+
+      return this.patroneRepository.delete(user_id);
+
+    }
+
 
 
 

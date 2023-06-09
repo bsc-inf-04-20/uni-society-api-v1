@@ -6,12 +6,15 @@ import { createUserParams, updateUserParams } from 'src/utils/params';
 import { createRequestDto } from './../../dtos/createRequest.dto';
 import { Request } from 'src/typeorm/entities/Requests';
 import { User_Society } from 'src/typeorm/entities/User_Society';
+import { ConfigService } from '@nestjs/config';
+import { get } from 'http';
 
 
 
 @Injectable()
 export class UsersService {
     constructor(
+         
         @InjectRepository(User) private userRepository: Repository<User>,
         @InjectRepository(Request) private requestRepository: Repository<Request>,
         @InjectRepository(User_Society) private userToSocietyRepository: Repository<User_Society>,
@@ -19,6 +22,7 @@ export class UsersService {
     ){}
 
  findUsers(){
+
        return this.userRepository.find();
     }
 

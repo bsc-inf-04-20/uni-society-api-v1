@@ -28,7 +28,10 @@ deleteEvent(@Param('eventId', ParseIntPipe) eventId:number){
     return this.eventService.updateEvent(eventId, updateEventDetails);
  }
 
- 
+ @Post('users/:userId/events/:eventId')
+  joinEvent(@Param('eventId', ParseIntPipe) eventId:number, @Param('userId', ParseIntPipe) userId:number){
+    return this.eventService.joinEvent(userId, eventId);
+  }
 
 
 }

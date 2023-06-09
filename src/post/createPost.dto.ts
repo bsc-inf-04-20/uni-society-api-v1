@@ -1,4 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { IsArray } from "class-validator";
 
 export class createPostDto{
     @ApiProperty({
@@ -8,8 +9,9 @@ export class createPostDto{
     details:string;
 
     @ApiProperty({
-        type:String,
+        type:Array,
         description:'A string array is required'
       })
+    @IsArray()
     audienceSocieties:string[];
 }

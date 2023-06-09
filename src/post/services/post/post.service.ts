@@ -60,6 +60,10 @@ export class PostService {
         return queryCmd;
     }
 
+    async removePost(post_id:number){
+        return this.postRepository.delete(post_id);
+    }
+
 
 
 

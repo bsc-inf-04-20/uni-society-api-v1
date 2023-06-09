@@ -1,6 +1,7 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Society } from "./Society";
 import { User } from "./User";
+import { Comment } from './comment';
 
 
 @Entity({name:"post"})
@@ -22,5 +23,8 @@ export class Post{
     @ManyToOne(type=>User)
     @JoinColumn({ referencedColumnName: "id" ,name:"user_id"})
     user:User;
+
+    @OneToMany(()=>Comment, comment=>comment.post)
+    comments:Comment[];
 
 }
