@@ -53,7 +53,7 @@ export class PostService {
     }
 
     async getposts(societyId:number){
-        const fetchrequestQuery=`select details from post inner join post_to_society on post.post_id=post_to_society.post_id where post_to_society.society_id=${societyId};`;
+        const fetchrequestQuery=`select * from post inner join post_to_society on post.post_id=post_to_society.post_id where post_to_society.society_id=${societyId};`;
 
         const queryCmd=await this.entityManager.query(fetchrequestQuery);
 
