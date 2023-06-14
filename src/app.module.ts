@@ -33,11 +33,11 @@ import { UserEvents} from './typeorm/entities/user_to_Events';
     }),
     TypeOrmModule.forRoot({
     type:'mysql',
-    host: 'sql17.freemysqlhosting.net' ,
+    host: 'sql7.freemysqlhosting.net' ,
     port:3306,
-    username:'sql7626204',
-    password:'WrX8QnxRCY',
-    database:'sql7626204',
+    username:'sql7626209',
+    password:'HlJiDcGEQx',
+    database:'sql7626209',
     entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent, Comment, UserEvents],
     synchronize: true, 
     autoLoadEntities: true
