@@ -35,11 +35,11 @@ import { UserEvents} from './typeorm/entities/user_to_Events';
     type:'mysql',
     host: 'sql10.freemysqlhosting.net' ,
     port:3306,
-    username:'sql10624337',
-    password:'8BpFrZxlHd',
-    database:'sql10624337',
+    username:'sql7626204',
+    password:'WrX8QnxRCY',
+    database:'sql7626204',
     entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent, Comment, UserEvents],
-    synchronize: false, 
+    synchronize: true, 
     autoLoadEntities: true
   }), UsersModule, SocietiesModule, EventsModule, PostModule, PatroneModule, SocietyLeaderModule, AuthModule, 
   ViteMailModule.authProvider({

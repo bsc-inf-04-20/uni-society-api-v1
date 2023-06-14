@@ -7,6 +7,9 @@ import { AuthenticatedGuard } from './auth/utils/authenticated.guard';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.enableCors();
+
   app.use(
     session({
       secret:'secret',
