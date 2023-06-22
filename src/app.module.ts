@@ -36,7 +36,7 @@ import { UserEvents} from './typeorm/entities/user_to_Events';
     host: 'sql7.freesqldatabase.com' ,
     port:3306,
     username:'sql7627925',
-    password:'Xe6Qgvfhli',
+    password:'Xe6QgvfhIi',
     database:'sql7627925',
     entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent, Comment, UserEvents],
     synchronize: false, 
