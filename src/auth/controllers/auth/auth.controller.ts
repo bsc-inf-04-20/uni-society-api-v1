@@ -30,4 +30,12 @@ export class AuthController {
         return req.user
     }
 
+    @ApiOperation({summary:'logout'})
+    @UseGuards(AuthenticatedGuard)
+    @Post('logout')
+    logout(@Request() req){
+      req.session.destroy();
+      return {msg: 'The user session has ended'};
+    }
+
 }
