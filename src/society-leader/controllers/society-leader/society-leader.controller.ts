@@ -1,11 +1,12 @@
 import { Controller, Get, Param, ParseIntPipe, Post, UseGuards, Delete } from '@nestjs/common';
 import { SocietyLeaderService } from './../../services/society-leader/society-leader.service';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from 'src/auth/guards/auth/auth.guard';
 
 @ApiTags('leader')
+@UseGuards(AuthGuard)
+@ApiBearerAuth('JWT-auth')
 @Controller('society-leader')
-@UseGuards(AuthenticatedGuard)
 export class SocietyLeaderController {
     constructor(private SocietyLeaderService: SocietyLeaderService){}
 

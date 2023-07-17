@@ -1,11 +1,12 @@
 import { Controller, Param, Post, ParseIntPipe, Body, Patch, Get, UseGuards } from '@nestjs/common';
 import { CommentsService } from './../../services/comments/comments.service';
 import { createCommentDto } from './../../comments.Dto';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from 'src/auth/guards/auth/auth.guard';
 
 @ApiTags('comments')
-@UseGuards(AuthenticatedGuard)
+@UseGuards(AuthGuard)
+@ApiBearerAuth('JWT-auth')
 @Controller()
 export class CommentsController {
 

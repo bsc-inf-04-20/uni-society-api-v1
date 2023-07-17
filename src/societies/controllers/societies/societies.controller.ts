@@ -1,12 +1,13 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards } from '@nestjs/common';
 import { createSocietyDto } from 'src/societies/dtos/createSociety.dto';
 import { SocietiesService } from 'src/societies/services/societies/societies.service';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from 'src/auth/guards/auth/auth.guard';
 
 
-@ApiTags('Society')  
-@UseGuards(AuthenticatedGuard)
+@ApiTags('Society') 
+@UseGuards(AuthGuard)
+@ApiBearerAuth('JWT-auth') 
 @Controller('societies')
 export class SocietiesController {
     constructor(private SocietiesService: SocietiesService){}

@@ -1,12 +1,13 @@
 import { Controller, Param, Post, ParseIntPipe, Body, UseGuards } from '@nestjs/common';
 import { MailService } from 'src/mail/service/mail/mail.service';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { MailCreationDto } from 'src/mail/MailcreationDto';
-import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
+import { AuthGuard } from 'src/auth/guards/auth/auth.guard';
 
 @ApiTags('mail')
+@UseGuards(AuthGuard)
+@ApiBearerAuth('JWT-auth')
 @Controller('mail')
-@UseGuards(AuthenticatedGuard)
 export class MailController {
 constructor (private mailService:MailService){}
 

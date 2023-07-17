@@ -1,12 +1,13 @@
 import { Controller, Param, Post, ParseIntPipe, Body, Get, UseGuards, Delete } from '@nestjs/common';
 import { PatroneService } from 'src/patrone/service/patrone/patrone.service';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { createPatroneDto } from 'src/patrone/dtos/createPatrone.dto';
-import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
+import { AuthGuard } from 'src/auth/guards/auth/auth.guard';
 
 @ApiTags('patrone')
+@UseGuards(AuthGuard)
+@ApiBearerAuth('JWT-auth')
 @Controller('patrones')
-@UseGuards(AuthenticatedGuard)
 export class PatroneController {
     constructor(private PatroneService: PatroneService){}
 

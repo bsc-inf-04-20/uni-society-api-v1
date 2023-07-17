@@ -1,12 +1,13 @@
 import { Controller, Param, Post, ParseIntPipe, Body, Delete, Patch, UseGuards, Get } from '@nestjs/common';
 import { EventsService } from 'src/events/services/events/events.service';
 import { createEventDto } from './../../createEvent.dto';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from 'src/auth/guards/auth/auth.guard';
 
 @ApiTags('events')
+@UseGuards(AuthGuard)
+@ApiBearerAuth('JWT-auth')
 @Controller()
-@UseGuards(AuthenticatedGuard)
 export class EventsController {
 
     constructor(

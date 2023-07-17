@@ -16,7 +16,6 @@ import { PatroneModule } from './patrone/patrone.module';
 import { SocietyLeaderModule } from './society-leader/society-leader.module';
 import { Society_Leader } from './typeorm/entities/SocietyLeader';
 import { SocietyToEvent } from './typeorm/entities/society_to_event';
-import { AuthModule } from './auth/auth.module';
 import { ViteMailModule } from 'vitemail';
 import { MailModule } from './mail/mail.module';
 import { ConfigModule } from '@nestjs/config';
@@ -24,6 +23,7 @@ import { Comment } from './typeorm/entities/comment';
 import { CommentsModule } from './comments/comments.module';
 import { User_event } from './events/user_event';
 import { UserEvents} from './typeorm/entities/user_to_Events';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -41,11 +41,11 @@ import { UserEvents} from './typeorm/entities/user_to_Events';
     entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent, Comment, UserEvents],
     synchronize: false, 
     autoLoadEntities: true
-  }), UsersModule, SocietiesModule, EventsModule, PostModule, PatroneModule, SocietyLeaderModule, AuthModule, 
+  }), UsersModule, SocietiesModule, EventsModule, PostModule, PatroneModule, SocietyLeaderModule, 
   ViteMailModule.authProvider({
     email:'tupomojoo@gmail.com',
     password:'pyypyjqekfeumemj'
-  }), MailModule, CommentsModule],
+  }), MailModule, CommentsModule, AuthModule],
   controllers: [],
   providers: [],
 })

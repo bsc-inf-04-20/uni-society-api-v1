@@ -1,11 +1,13 @@
 import { Body, Controller, Post, Param, ParseIntPipe, Get, UseGuards, Delete } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { PostService } from './../../services/post/post.service';
 import { createPostDto} from './../../createPost.dto';
-import { AuthenticatedGuard } from 'src/auth/utils/authenticated.guard';
+import { AuthGuard } from 'src/auth/guards/auth/auth.guard';
+
 
 @ApiTags('post')
-@UseGuards(AuthenticatedGuard)
+@UseGuards(AuthGuard)
+@ApiBearerAuth('JWT-auth')
 @Controller()
 export class PostController {
 
