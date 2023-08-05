@@ -7,7 +7,7 @@ import * as passport from 'passport';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  //app.enableCors();
+  app.enableCors();
 
   const config = new DocumentBuilder()
   .setTitle('UNI-SOCIETY')
