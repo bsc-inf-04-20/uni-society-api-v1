@@ -15,6 +15,12 @@ export class User{
     name:string;
 
     @Column()
+    sex:string;
+
+    @Column()
+    birthday:Date;
+
+    @Column()
     email:string;
 
     @Column()
