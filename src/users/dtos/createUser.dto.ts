@@ -5,6 +5,8 @@ import { ApiProperty } from "@nestjs/swagger";
 export const createUserSchema=joi.object({
     username: joi.string().required(),
     name:joi.string().required(),
+    sex:joi.string().required(),
+    birthday:joi.string().required(),
     email: joi.string().required(),
     password: joi.string().required(),
     yearOfStudy: joi.number().required()
