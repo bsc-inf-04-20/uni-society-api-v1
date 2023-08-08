@@ -30,7 +30,7 @@ export class createUserDto{
       type:String,
       description:'A string is required'
     })
-    gender:string;
+    sex:string;
 
     @ApiProperty({
       type:String,
