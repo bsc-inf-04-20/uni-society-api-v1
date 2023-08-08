@@ -18,7 +18,7 @@ export class User{
     sex:string;
 
     @Column()
-    birthday:Date;
+    birthday:string;
 
     @Column()
     email:string;

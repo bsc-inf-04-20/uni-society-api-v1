@@ -24,10 +24,10 @@ export class updateUserDto{
     gender:string;
 
     @ApiProperty({
-      type:Date,
+      type:String,
       description:'A string is required'
     })
-    birthday: Date;
+    birthday:string;
 
 
 
