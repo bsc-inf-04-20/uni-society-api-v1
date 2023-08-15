@@ -47,7 +47,7 @@ export class UsersController {
     async updateUSer(
     @Param('id', ParseIntPipe) id:number, 
     @Body() updateUserDto: updateUserDto){
-        await this.UsersService.updateUser(id, updateUserDto)
+       return await this.UsersService.updateUser(id, updateUserDto)
    }
 
    @ApiOperation({summary:'delete user'})
