@@ -39,7 +39,7 @@ import { AuthModule } from './auth/auth.module';
     password:'Xe6QgvfhIi',
     database:'sql7627925',
     entities:[User, Society, Event, User_Society, Request, Post, Patrone, Event, postToSociety, Society_Leader, SocietyToEvent, Comment, UserEvents],
-    synchronize: false, 
+    synchronize: true, 
     autoLoadEntities: true
   }), UsersModule, SocietiesModule, EventsModule, PostModule, PatroneModule, SocietyLeaderModule, 
   ViteMailModule.authProvider({
